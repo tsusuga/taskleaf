@@ -5,4 +5,5 @@
   .form-group
     = f.label :description
     = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+    = f.select :priority, ['High', 'Middle', 'Low'], {selected: 'Middle'}, class: 'form-control mt-3'
   = f.submit nil, class: 'btn btn-primary'
