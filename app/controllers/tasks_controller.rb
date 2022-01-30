@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
+    @tasks = current_user.tasks
   end
 
   def show
@@ -15,7 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
-    if task.save
+    if @task.save
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
     else
       render :new
